@@ -38,13 +38,3 @@ Luua süsteem (API + kasutajaliides), mis toetab mootorratturite kogukonda ja mu
 
 ---
 
-## Tehniline kirjeldus (lühidalt)
-
-- **Backend / API**: Node.js + Express (või muu sobiv stack)
-- **Andmebaas**: PostgreSQL / MongoDB
-- **Front-end**: React Native (või PWA) — sobib mobiilseks kasutamiseks
-- **Kaardifunktsioonid**: Google Maps API / Mapbox
-- **Autentimine**: JWT / OAuth
-- **Reaalajas asukoha jagamine**: WebSocket / Firebase Realtime Database
-
----
