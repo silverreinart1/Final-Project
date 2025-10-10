@@ -26,9 +26,9 @@ To create a system (API + user interface) that supports the motorcyclist communi
 | Backend API | Laravel (PHP 8+)                                 | RESTful API, authentication, PostGIS |
 | Database    | MySQL + Sqlite                                   | Store GPS routes, spatial queries    |
 | Real-time   | Laravel Echo + Pusher / WebSockets               | Live user map, SOS alerts            |
-| Frontend    | Vue 3 + Vue Router + Vuex (optional)             | SPA frontend, map integration        |
+| Frontend    | Vue 3                                            | SPA frontend, map integration        |
 | Maps        | Mapbox GL JS or Google Maps API                  | Display routes and live users        |
-| Deployment  | Docker + Cloud hosting (e.g., DigitalOcean, AWS) | Containerized, scalable              |
+| Deployment  | Docker + Cloud hosting (AWS)                     | Containerized, scalable              |
 
 ---
 
