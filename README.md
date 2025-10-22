@@ -1,78 +1,95 @@
-# MotoRadar
+# 🏍️ MotoRadar
 
----
-
-**MotoRadar** is a platform that brings together essential features for motorcyclists into one application. The goal is to create an active and useful community where users can share routes, information, events, and request assistance while on the road if needed.
+MotoRadar is a platform that brings together essential features for motorcyclists into one application. It aims to create an active and useful community where users can share routes, events, classifieds, and request roadside assistance when needed.
 
 ---
 
 ## 🚀 Project Goal
 
-To create a system (API + user interface) that supports the motorcyclist community and makes the riding experience safer, more exciting, and improves the speed of information sharing.
+To create a full-stack application (API + UI) that supports the motorcyclist community, enhances safety, and improves information sharing on the road.
 
 ---
 
-***🔗 Links***
-  - [Figma](https://www.figma.com/design/TGvAjL17XIaSoKemeAOeQO/FINAL_PROJECT?node-id=0-1&p=f&t=bNDEiI4frhEMroet-0)
-  - [Jira Board](https://silverreinart01-1760074771033.atlassian.net/jira/software/projects/SMS/boards/1)
+## 🔗 Links
+
+- 🎨 [Figma Design](https://www.figma.com/design/TGvAjL17XIaSoKemeAOeQO/FINAL_PROJECT?node-id=0-1&p=f&t=bNDEiI4frhEMroet-0)
+- 📋 [Jira Board](https://silverreinart01-1760074771033.atlassian.net/jira/software/projects/SMS/boards/1)
 
 ---
 
-### Tech Stack for MotoRadar
+## 🛠️ Tech Stack
 
+### Frontend
 
-| Layer       | Technology                                       | Notes                                |
-| ----------- | ------------------------------------------------ | ------------------------------------ |
-| Backend API | Laravel (PHP 12+)                                | RESTful API, authentication, PostGIS |
-| Database    | MySQL or Sqlite                                  | Store GPS routes, spatial queries    |
-| Real-time   | Laravel Echo + Pusher / WebSockets               | Live user map, SOS alerts            |
-| Frontend    | Vue 3                                            | SPA frontend, map integration        |
-| Maps        | Mapbox GL JS or Google Maps API                  | Display routes and live users        |
-| Deployment  | Docker or Cloud hosting (AWS)                    | Containerized, scalable              |
+| Technology    | Purpose                              |
+|---------------|--------------------------------------|
+| **Next.js**   | React framework for SSR/SSG          |
+| **Tailwind CSS** | Utility-first CSS for styling     |
+| **Mapbox GL JS** | Interactive maps for GPS features |
+
+### Backend
+
+| Technology     | Purpose                                 |
+|----------------|-----------------------------------------|
+| **Node.js + Express** | RESTful API                     |
+| **Socket.io**   | Real-time communication (live map, SOS) |
+| **PostgreSQL + PostGIS** | Spatial data & route storage  |
+| **Prisma ORM** | Type-safe database access               |
+
+### Deployment
+
+| Layer         | Tech / Service Suggestions            |
+|---------------|----------------------------------------|
+| **Frontend**  | Vercel or Netlify                     |
+| **Backend**   | Railway, Render, Fly.io               |
+| **Database**  | Supabase (PostgreSQL + PostGIS)       |
+| **Containers**| Docker (optional for local dev)       |
 
 ---
 
 ## 🔧 Core Features
 
 ### 📍 Route Tracking
-- Saves the ridden route (GPS-based).
-- Displays distance covered, average speed, and time spent.
-- Users can view and rate routes shared by others.
+- Logs GPS-based routes in real time.
+- Displays distance, duration, and speed stats.
+- Routes can be saved, rated, and shared.
 
-### 🧭 Route Sharing and Categorization
-- Users can share their favorite riding routes.
-- Roads are categorized: **offroad**, **asphalt**, **mixed roads**, etc.
-- Routes can include descriptions, difficulty level, and photos.
+### 🧭 Route Sharing & Categorization
+- Upload and explore community-shared routes.
+- Categories: Offroad, Asphalt, Mixed, etc.
+- Includes photos, difficulty ratings, descriptions.
 
-### 🆘 Emergency Assistance Feature
-- Ability to mark an exact location and describe the issue (e.g., mechanical failure).
-- Nearby users can see the assistance request and respond.
-- Replaces the need for Facebook posts in urgent situations.
+### 🆘 Emergency Assistance (SOS)
+- Request roadside help with GPS location and issue description.
+- Nearby riders receive real-time alerts via Socket.io.
+- Map markers show active SOS requests.
 
 ### 👥 Live User Map
-- Displays registered users on the map (if visibility is enabled).
-- Option to join others on the same route or start a group ride.
+- Shows online users on a map (if opted in).
+- Join rides or see nearby riders.
+- Toggle visibility at any time.
 
 ### 📢 Info Board & Classifieds
-- Shared information space for motorcycle-related topics:
-  - Events (gatherings, races)
-  - Classifieds (parts, bikes, gear)
-  - Services (workshops, repairs, transport, etc.)
-- Ability to filter by topic, location, or date.
+- Post and browse events, classifieds, and motorcycle services.
+- Filter posts by topic, location, or date.
+- Useful for meetups, gear trades, or shop recommendations.
 
 ---
 
 ## 📅 Estimated Timeline
 
-| Phase                          | Description                                                  | Duration         |
-|-------------------------------|--------------------------------------------------------------|------------------|
-| **1. Planning & Specification**| Requirements gathering, technical planning, UI/UX concepts  | 2–3 weeks        |
-| **2. Backend Development**     | API development, database structure, core logic             | 4–6 weeks        |
-| **3. Frontend Development**    | Mobile/web UI implementation, map integrations              | 5–7 weeks        |
-| **4. Feature Integration**     | Emergency feature, real-time location, sharing tools        | 3–4 weeks        |
-| **5. Testing & QA**            | Bug fixing, performance testing, user testing               | 2–3 weeks        |
-| **6. Launch**                  | Release beta, iterate improvements                          | 2 weeks          |
+| Phase                          | Description                                              | Duration       |
+|-------------------------------|----------------------------------------------------------|----------------|
+| 📝 Planning & Specification     | Requirements, UX/UI design, tech setup                  | 2–3 weeks      |
+| 🏗️ Backend Development         | REST API, database models, geolocation features         | 4–6 weeks      |
+| 🎨 Frontend Development        | UI components, map integration, forms                   | 5–7 weeks      |
+| 🔄 Feature Integration         | Real-time map, SOS, route sharing                       | 3–4 weeks      |
+| 🧪 Testing & QA                | Manual/user testing, bug fixes, optimizations           | 2–3 weeks      |
+| 🚀 Launch                     | Beta release + feedback loop                            | 2 weeks        |
 
-> **🕒 Total Estimated Time: 4–5 months**
+> **⏱️ Total Estimated Duration: 4–5 months**
 
 ---
+
+## 🧭 Project Structure (Monorepo Example)
+
