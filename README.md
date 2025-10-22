@@ -14,6 +14,7 @@ To create a system (API + user interface) that supports the motorcyclist communi
 
 - 🎨 [Figma](https://www.figma.com/design/TGvAjL17XIaSoKemeAOeQO/FINAL_PROJECT?node-id=0-1&p=f&t=bNDEiI4frhEMroet-0)
 - 📋 [Jira Board](https://silverreinart01-1760074771033.atlassian.net/jira/software/projects/SMS/boards/1)
+- 🤳[Jira Confluence](https://silverreinart01-1760074771033.atlassian.net/wiki/x/AwAC)
 
 ---
 
