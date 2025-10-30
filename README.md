@@ -20,14 +20,14 @@ To create a system (API + user interface) that supports the motorcyclist communi
 
 ## 🛠️ Tech Stack for MotoRadar
 
-| Layer       | Technology                                       | Notes                                |
-| ----------- | ------------------------------------------------ | ------------------------------------ |
-| Backend API | Firebase                                         | Serverless backend, user authentication, route sharing, SOS alerts|
-| Database    | MySQL or SQLite                                  | Store GPS routes, spatial queries    |
-| Real-time   | Laravel Echo + Pusher / WebSockets               | Live user map, SOS alerts            |
-| Frontend    | Vue 3                                            | SPA frontend, map integration        |
-| Maps        | Mapbox GL JS or Google Maps API                  | Display routes and live users        |
-| Deployment  | Docker or Cloud hosting (AWS)                    | Containerized, scalable              |
+| Layer       | Technology                                       | Notes                                                      |
+| ----------- | ------------------------------------------------ | ---------------------------------------------------------- |
+| Backend API | Firebase (Firestore + Realtime DB + Auth)       | Serverless backend, user authentication, route sharing, SOS alerts |
+| Database    | sqflite                                          | SQLite plugin for Flutter, store GPS points and rides locally |
+| Real-time   | Firebase Realtime Database + Cloud Messaging    | Live user map, SOS alerts, push notifications             |
+| Frontend    | Flutter (Dart)                                  | Cross-platform mobile app, UI, map integration            |
+| Maps        | Google Maps SDK for Flutter                      | Display routes, polylines, live users, markers           |
+| Deployment  | Direct APK install / Firebase App Distribution  | Free testing on Android devices; optional Play Store deployment |
 
 ---
 
