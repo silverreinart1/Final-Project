@@ -22,7 +22,7 @@ To create a system (API + user interface) that supports the motorcyclist communi
 
 | Layer       | Technology                                       | Notes                                |
 | ----------- | ------------------------------------------------ | ------------------------------------ |
-| Backend API | Laravel (PHP 12+)                                | RESTful API, authentication, PostGIS |
+| Backend API | Firebase                                         | Serverless backend, user authentication, route sharing, SOS alerts|
 | Database    | MySQL or SQLite                                  | Store GPS routes, spatial queries    |
 | Real-time   | Laravel Echo + Pusher / WebSockets               | Live user map, SOS alerts            |
 | Frontend    | Vue 3                                            | SPA frontend, map integration        |
