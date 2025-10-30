@@ -61,17 +61,106 @@ To create a system (API + user interface) that supports the motorcyclist communi
 
 ---
 
-## 📅 Estimated Timeline
+## 🗺️ Roadmap
 
-| Phase                          | Description                                                  | Duration         |
-|-------------------------------|--------------------------------------------------------------|------------------|
-| **1. Planning & Specification**| Requirements gathering, technical planning, UI/UX concepts  | 2–3 weeks        |
-| **2. Backend Development**     | API development, database structure, core logic             | 4–6 weeks        |
-| **3. Frontend Development**    | Mobile/web UI implementation, map integrations              | 5–7 weeks        |
-| **4. Feature Integration**     | Emergency feature, real-time location, sharing tools        | 3–4 weeks        |
-| **5. Testing & QA**            | Bug fixing, performance testing, user testing               | 2–3 weeks        |
-| **6. Launch**                  | Release beta, iterate improvements                          | 2 weeks          |
-
-> **🕒 Total Estimated Time: 4–5 months**
+This roadmap outlines the development plan for the **Moto Tracker App**, a Flutter-based motorcycle tracking app with local GPS tracking, route sharing, real-time user map, and emergency alerts.
 
 ---
+
+<details>
+<summary>Phase 1: Project Setup (1–2 days)</summary>
+
+- Install Flutter, Android Studio, and device emulator.
+- Initialize Flutter project.
+- Set up Firebase project (Firestore, Realtime DB, Auth, Storage).
+- Add essential Flutter packages: `sqflite`, `google_maps_flutter`, `geolocator`, `firebase_core`, `cloud_firestore`, `firebase_auth`, `firebase_messaging`.
+- Configure Android app with Firebase (`google-services.json`).
+
+**Deliverable:**  
+Basic Flutter app runs on Android with Firebase connected.
+</details>
+
+<details>
+<summary>Phase 2: Local Route Tracking (3–4 days)</summary>
+
+- Implement GPS tracking using `geolocator`.
+- Create SQLite database schema for rides and GPS points.
+- Implement start/stop ride buttons.
+- Calculate ride statistics: distance, time, average speed.
+- Display ride route on Google Maps with polylines.
+
+**Deliverable:**  
+Rider can start/stop a ride and see the route + stats on the map.
+</details>
+
+<details>
+<summary>Phase 3: Route Sharing & Firestore Integration (3–4 days)</summary>
+
+- Add Firebase Firestore for storing shared rides.
+- Sync local rides to Firestore when online.
+- Include ride metadata: title, description, road type, difficulty, photos.
+- Create UI to view shared rides from other users.
+- Optional: Users can rate or like rides.
+
+**Deliverable:**  
+Users can share rides online and view others’ rides.
+</details>
+
+<details>
+<summary>Phase 4: Real-time Features & SOS Alerts (3–5 days)</summary>
+
+- Implement live user location tracking using Firebase Realtime DB.
+- Display other active users on the map (if visibility enabled).
+- Add SOS button: mark exact location and description of problem.
+- Send notifications to nearby users using Firebase Cloud Messaging.
+- Optional: add “join group ride” feature.
+
+**Deliverable:**  
+Live user map works; SOS alerts can be sent/received in real time.
+</details>
+
+<details>
+<summary>Phase 5: Info Board & Media Storage (2–3 days)</summary>
+
+- Add Firestore collection for info board posts.
+- Implement categories: events, classifieds, services.
+- Enable image uploads with Firebase Storage.
+- Add filters by topic, location, or date.
+- Display posts in a scrollable list in the app.
+
+**Deliverable:**  
+Users can post, view, and filter info board content with images.
+</details>
+
+<details>
+<summary>Phase 6: Polishing & Testing (2–3 days)</summary>
+
+- Improve UI/UX: buttons, maps, stats display.
+- Test GPS tracking accuracy and map polylines.
+- Test Firebase sync: offline → online transitions.
+- Test SOS alerts and notifications.
+- Bug fixes, code cleanup, and comments.
+
+**Deliverable:**  
+Stable, functional app ready for submission/demo.
+</details>
+
+<details>
+<summary>Phase 7: Free Testing & Deployment (1–2 days)</summary>
+
+- Build debug/release APK: `flutter build apk --debug`
+- Install APK on your own device for testing.
+- Optional: use Firebase App Distribution to share APK with testers.
+- Prepare screenshots/documentation for final presentation.
+
+**Deliverable:**  
+App installed on device(s), fully functional for demo.
+</details>
+
+---
+
+**Total Estimated Time:** ~3 weeks  
+- Phases 1–2: 5–6 days  
+- Phases 3–4: 6–9 days  
+- Phases 5–7: 5–7 days
+
