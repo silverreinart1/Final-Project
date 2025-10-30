@@ -155,9 +155,3 @@ Stable, functional app ready for submission/demo.
 </details>
 
 ---
-
-**Total Estimated Time:** ~3 weeks  
-- Phases 1–2: 5–6 days  
-- Phases 3–4: 6–9 days  
-- Phases 5–7: 5–7 days
-
