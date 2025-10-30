@@ -68,7 +68,7 @@ This roadmap outlines the development plan for the **Moto Tracker App**, a Flutt
 ---
 
 <details>
-<summary>Phase 1: Project Setup (1–2 days)</summary>
+<summary>Phase 1: Project Setup</summary>
 
 - Install Flutter, Android Studio, and device emulator.
 - Initialize Flutter project.
@@ -81,7 +81,7 @@ Basic Flutter app runs on Android with Firebase connected.
 </details>
 
 <details>
-<summary>Phase 2: Local Route Tracking (3–4 days)</summary>
+<summary>Phase 2: Local Route Tracking</summary>
 
 - Implement GPS tracking using `geolocator`.
 - Create SQLite database schema for rides and GPS points.
@@ -94,7 +94,7 @@ Rider can start/stop a ride and see the route + stats on the map.
 </details>
 
 <details>
-<summary>Phase 3: Route Sharing & Firestore Integration (3–4 days)</summary>
+<summary>Phase 3: Route Sharing & Firestore Integration</summary>
 
 - Add Firebase Firestore for storing shared rides.
 - Sync local rides to Firestore when online.
@@ -107,7 +107,7 @@ Users can share rides online and view others’ rides.
 </details>
 
 <details>
-<summary>Phase 4: Real-time Features & SOS Alerts (3–5 days)</summary>
+<summary>Phase 4: Real-time Features & SOS Alerts</summary>
 
 - Implement live user location tracking using Firebase Realtime DB.
 - Display other active users on the map (if visibility enabled).
@@ -120,7 +120,7 @@ Live user map works; SOS alerts can be sent/received in real time.
 </details>
 
 <details>
-<summary>Phase 5: Info Board & Media Storage (2–3 days)</summary>
+<summary>Phase 5: Info Board & Media Storage</summary>
 
 - Add Firestore collection for info board posts.
 - Implement categories: events, classifieds, services.
@@ -133,7 +133,7 @@ Users can post, view, and filter info board content with images.
 </details>
 
 <details>
-<summary>Phase 6: Polishing & Testing (2–3 days)</summary>
+<summary>Phase 6: Polishing & Testing</summary>
 
 - Improve UI/UX: buttons, maps, stats display.
 - Test GPS tracking accuracy and map polylines.
@@ -146,15 +146,12 @@ Stable, functional app ready for submission/demo.
 </details>
 
 <details>
-<summary>Phase 7: Free Testing & Deployment (1–2 days)</summary>
+<summary>Phase 7: Free Testing & Deployment</summary>
 
 - Build debug/release APK: `flutter build apk --debug`
 - Install APK on your own device for testing.
 - Optional: use Firebase App Distribution to share APK with testers.
 - Prepare screenshots/documentation for final presentation.
-
-**Deliverable:**  
-App installed on device(s), fully functional for demo.
 </details>
 
 ---
