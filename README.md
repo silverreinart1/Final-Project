@@ -31,207 +31,215 @@ To create a system (API + user interface) that supports the motorcyclist communi
 
 ---
 
-## System Architecture
-MotoRadar follows a client–server architecture.
+# MotoRadar – Motorcycle Route Tracker
 
-## Mobile Client (Flutter)
-Responsible for:
+MotoRadar is a **Flutter-based motorcycle tracking application** designed for riders who want to record their routes, share rides with the community, and get help in emergencies.
 
-User interface
+The app allows riders to:
 
-GPS tracking
-
-Map rendering
-
-Ride statistics
-
-Local data storage
-
-## Firebase Backend
-Firebase provides:
-
-User authentication
-
-Shared ride storage
-
-Real-time location updates
-
-SOS alerts and notifications
-
-## Local Storage (SQLite)
-Used for:
-
-Storing rides locally
-
-Saving GPS coordinates
-
-Supporting offline tracking
+* Track rides using GPS
+* View ride statistics
+* Share routes with other riders
+* See nearby riders in real time
+* Send SOS alerts when help is needed
+* Use a community board for events, gear, and services
 
 ---
 
-## Core Features
-Route Tracking
+# System Architecture
 
-GPS-based route recording
+MotoRadar follows a **client–server architecture**.
 
-Displays distance, time, and average speed
+## Mobile Client (Flutter)
 
-Routes displayed on Google Maps with polylines
+Responsible for:
+
+* User interface
+* GPS tracking
+* Map rendering
+* Ride statistics
+* Local data storage
+
+---
+
+## Firebase Backend
+
+Firebase provides:
+
+* User authentication
+* Shared ride storage
+* Real-time location updates
+* SOS alerts and notifications
+
+---
+
+## Local Storage (SQLite)
+
+SQLite is used for:
+
+* Storing rides locally
+* Saving GPS coordinates
+* Supporting offline tracking
+
+---
+
+# Core Features
+
+## Route Tracking
+
+* GPS-based route recording
+* Displays **distance, time, and average speed**
+* Routes displayed on **Google Maps with polylines**
+
+---
 
 ## Route Sharing
-Riders can share routes with the community
+
+Riders can share routes with the community.
 
 Routes include:
 
-Title
+* Title
+* Description
+* Difficulty level
+* Road type (asphalt, offroad, mixed)
+* Photos
 
-Description
-
-Difficulty level
-
-Road type (asphalt, offroad, mixed)
-
-Photos
+---
 
 ## Emergency Assistance (SOS)
-Riders can mark their exact location when they need help
 
-The issue can be described (e.g., mechanical failure)
+If a rider needs help:
 
-Nearby users receive notifications
+* The rider can mark their **exact location**
+* A **description of the issue** can be added (e.g., mechanical failure)
+* **Nearby users receive notifications**
+
+---
 
 ## Live User Map
-Displays active riders on the map
 
-Visibility can be enabled or disabled
+* Displays **active riders on the map**
+* Visibility can be **enabled or disabled**
+* Riders can **join others on the same route**
 
-Riders can join others on the same route
+---
 
 ## Info Board & Classifieds
+
 A community board for:
 
-Motorcycle events
-
-Parts and bike sales
-
-Gear listings
-
-Workshop and repair services
+* Motorcycle events
+* Parts and bike sales
+* Gear listings
+* Workshop and repair services
 
 Users can filter posts by:
 
-Topic
-
-Location
-
-Date
+* Topic
+* Location
+* Date
 
 ---
 
-## Database Structure
-Firestore Collections
+# Database Structure
 
+## Firestore Collections
+
+### users
+
+```
 users
+ ├── id
+ ├── username
+ ├── avatar
+ ├── visibility
+ └── lastLocation
+```
 
-id
+### routes
 
-username
-
-avatar
-
-visibility
-
-lastLocation
-
+```
 routes
+ ├── id
+ ├── userId
+ ├── title
+ ├── description
+ ├── roadType
+ ├── difficulty
+ ├── polyline
+ ├── rating
+ └── createdAt
+```
 
-id
+### posts
 
-userId
-
-title
-
-description
-
-roadType
-
-difficulty
-
-polyline
-
-rating
-
-createdAt
-
+```
 posts
-
-id
-
-category
-
-title
-
-description
-
-imageUrl
-
-location
-
-createdAt
+ ├── id
+ ├── category
+ ├── title
+ ├── description
+ ├── imageUrl
+ ├── location
+ └── createdAt
+```
 
 ---
 
-## SQLite Tables
+# Local Database (SQLite)
+
+### rides
+
+```
 rides
+ ├── id
+ ├── startTime
+ ├── endTime
+ ├── distance
+ └── avgSpeed
+```
 
-id
+### gps_points
 
-startTime
-
-endTime
-
-distance
-
-avgSpeed
-
+```
 gps_points
-
-id
-
-rideId
-
-latitude
-
-longitude
-
-timestamp
+ ├── id
+ ├── rideId
+ ├── latitude
+ ├── longitude
+ └── timestamp
+```
 
 ---
 
-## User Flow
+# User Flow
 
-The user registers or logs in using Firebase Authentication.
+1. The user **registers or logs in** using Firebase Authentication.
 
-The rider starts a ride using the Start Ride button.
+2. The rider starts a ride using the **Start Ride** button.
 
-GPS coordinates are recorded locally using SQLite.
+3. **GPS coordinates are recorded locally** using SQLite.
 
-The route is displayed on Google Maps with a polyline.
+4. The route is displayed on **Google Maps with a polyline**.
 
-When the ride ends, the user can:
+5. When the ride ends, the user can:
 
-Save the ride locally
+* Save the ride locally
+* Share the ride online
 
-Share the ride online
+6. Other users can:
 
-Other users can view shared routes and rate them.
+* View shared routes
+* Rate routes
 
-If the rider needs help, they can trigger an SOS alert, which sends their location to nearby users.
+7. If a rider needs help, they can trigger an **SOS alert**, sending their location to nearby riders.
 
 ---
 
-### Project Structure (Flutter)
+# Project Structure (Flutter)
 
+```
 lib/
  ├── screens/
  ├── models/
@@ -239,109 +247,99 @@ lib/
  ├── widgets/
  ├── database/
  └── main.dart
+```
 
- screens – app pages and UI
-
-models – data models
-
-services – Firebase and API logic
-
-widgets – reusable UI components
-
-database – SQLite implementation
+**screens** – app pages and UI
+**models** – data models
+**services** – Firebase and API logic
+**widgets** – reusable UI components
+**database** – SQLite implementation
 
 ---
 
-## Roadmap
-This roadmap outlines the development plan for the Moto Tracker App, a Flutter-based motorcycle tracking app with local GPS tracking, route sharing, real-time user map, and emergency alerts.
+# Development Roadmap
+
+This roadmap outlines the development plan for MotoRadar.
+
 ---
 
 ## Phase 1 – Project Setup
 
-Install Flutter and Android Studio
+* Install Flutter and Android Studio
+* Initialize Flutter project
+* Set up Firebase project
+* Connect Firebase to the app
+* Add required packages
 
-Initialize Flutter project
+**Deliverable**
 
-Set up Firebase project
-
-Connect Firebase to the app
-
-Add required packages
-
-Deliverable:
 Basic Flutter app running with Firebase connected.
 
 ---
 
 ## Phase 2 – Local Route Tracking
- Implement GPS tracking
 
-Create SQLite database
+* Implement GPS tracking
+* Create SQLite database
+* Add **Start / Stop ride buttons**
+* Calculate ride statistics
+* Display route on map
 
-Add start/stop ride buttons
+**Deliverable**
 
-Calculate ride statistics
-
-Display route on map
-
-Deliverable:
 Users can record rides and view route statistics.
 
 ---
 
 ## Phase 3 – Route Sharing
-Add Firestore integration
 
-Sync rides to cloud
+* Add Firestore integration
+* Sync rides to cloud
+* Add ride metadata
+* Display shared routes
 
-Add ride metadata
+**Deliverable**
 
-Display shared routes
-
-Deliverable:
 Users can view and share routes online.
 
 ---
 
 ## Phase 4 – Real-Time Features
 
-Live rider location
+* Live rider location
+* Map showing nearby users
+* SOS emergency alerts
+* Push notifications
 
-Map showing nearby users
+**Deliverable**
 
-SOS emergency alerts
-
-Push notifications
-
-Deliverable:
 Live map and emergency alerts working in real time.
 
 ---
 
 ## Phase 5 – Info Board
 
-Firestore posts collection
+* Firestore **posts** collection
+* Categories (events, classifieds, services)
+* Image uploads with Firebase Storage
+* Filters by topic and location
 
-Categories (events, classifieds, services)
+**Deliverable**
 
-Image uploads with Firebase Storage
-
-Filters by topic and location
-
-Deliverable:
 Users can post and browse community information.
 
 ---
 
 ## Phase 6 – Testing and Improvements
 
-Improve UI and usability
+* Improve UI and usability
+* Test GPS accuracy
+* Test real-time features
+* Fix bugs and optimize code
 
-Test GPS accuracy
+**Deliverable**
 
-Test real-time features
-
-Fix bugs and optimize code
-
-Deliverable:
 Stable and functional application.
+
+---
+
