@@ -31,127 +31,317 @@ To create a system (API + user interface) that supports the motorcyclist communi
 
 ---
 
-## 🔧 Core Features
+## System Architecture
+MotoRadar follows a client–server architecture.
 
-### 📍 Route Tracking
-- Saves the ridden route (GPS-based).
-- Displays distance covered, average speed, and time spent.
-- Users can view and rate routes shared by others.
+## Mobile Client (Flutter)
+Responsible for:
 
-### 🧭 Route Sharing and Categorization
-- Users can share their favorite riding routes.
-- Roads are categorized: **offroad**, **asphalt**, **mixed roads**, etc.
-- Routes can include descriptions, difficulty level, and photos.
+User interface
 
-### 🆘 Emergency Assistance Feature
-- Ability to mark an exact location and describe the issue (e.g., mechanical failure).
-- Nearby users can see the assistance request and respond.
-- Replaces the need for Facebook posts in urgent situations.
+GPS tracking
 
-### 👥 Live User Map
-- Displays registered users on the map (if visibility is enabled).
-- Option to join others on the same route or start a group ride.
+Map rendering
 
-### 📢 Info Board & Classifieds
-- Shared information space for motorcycle-related topics:
-  - Events (gatherings, races)
-  - Classifieds (parts, bikes, gear)
-  - Services (workshops, repairs, transport, etc.)
-- Ability to filter by topic, location, or date.
+Ride statistics
+
+Local data storage
+
+## Firebase Backend
+Firebase provides:
+
+User authentication
+
+Shared ride storage
+
+Real-time location updates
+
+SOS alerts and notifications
+
+## Local Storage (SQLite)
+Used for:
+
+Storing rides locally
+
+Saving GPS coordinates
+
+Supporting offline tracking
+
+---
+
+## Core Features
+Route Tracking
+
+GPS-based route recording
+
+Displays distance, time, and average speed
+
+Routes displayed on Google Maps with polylines
+
+## Route Sharing
+Riders can share routes with the community
+
+Routes include:
+
+Title
+
+Description
+
+Difficulty level
+
+Road type (asphalt, offroad, mixed)
+
+Photos
+
+## Emergency Assistance (SOS)
+Riders can mark their exact location when they need help
+
+The issue can be described (e.g., mechanical failure)
+
+Nearby users receive notifications
+
+## Live User Map
+Displays active riders on the map
+
+Visibility can be enabled or disabled
+
+Riders can join others on the same route
+
+## Info Board & Classifieds
+A community board for:
+
+Motorcycle events
+
+Parts and bike sales
+
+Gear listings
+
+Workshop and repair services
+
+Users can filter posts by:
+
+Topic
+
+Location
+
+Date
 
 ---
 
-## 🗺️ Roadmap
+## Database Structure
+Firestore Collections
 
-This roadmap outlines the development plan for the **Moto Tracker App**, a Flutter-based motorcycle tracking app with local GPS tracking, route sharing, real-time user map, and emergency alerts.
+users
+
+id
+
+username
+
+avatar
+
+visibility
+
+lastLocation
+
+routes
+
+id
+
+userId
+
+title
+
+description
+
+roadType
+
+difficulty
+
+polyline
+
+rating
+
+createdAt
+
+posts
+
+id
+
+category
+
+title
+
+description
+
+imageUrl
+
+location
+
+createdAt
+
+---
+
+## SQLite Tables
+rides
+
+id
+
+startTime
+
+endTime
+
+distance
+
+avgSpeed
+
+gps_points
+
+id
+
+rideId
+
+latitude
+
+longitude
+
+timestamp
 
 ---
 
-<details>
-<summary>Phase 1: Project Setup</summary>
+## User Flow
 
-- Install Flutter, Android Studio, and device emulator.
-- Initialize Flutter project.
-- Set up Firebase project (Firestore, Realtime DB, Auth, Storage).
-- Add essential Flutter packages: `sqflite`, `google_maps_flutter`, `geolocator`, `firebase_core`, `cloud_firestore`, `firebase_auth`, `firebase_messaging`.
-- Configure Android app with Firebase (`google-services.json`).
+The user registers or logs in using Firebase Authentication.
 
-**Deliverable:**  
-Basic Flutter app runs on Android with Firebase connected.
-</details>
+The rider starts a ride using the Start Ride button.
 
-<details>
-<summary>Phase 2: Local Route Tracking</summary>
+GPS coordinates are recorded locally using SQLite.
 
-- Implement GPS tracking using `geolocator`.
-- Create SQLite database schema for rides and GPS points.
-- Implement start/stop ride buttons.
-- Calculate ride statistics: distance, time, average speed.
-- Display ride route on Google Maps with polylines.
+The route is displayed on Google Maps with a polyline.
 
-**Deliverable:**  
-Rider can start/stop a ride and see the route + stats on the map.
-</details>
+When the ride ends, the user can:
 
-<details>
-<summary>Phase 3: Route Sharing & Firestore Integration</summary>
+Save the ride locally
 
-- Add Firebase Firestore for storing shared rides.
-- Sync local rides to Firestore when online.
-- Include ride metadata: title, description, road type, difficulty, photos.
-- Create UI to view shared rides from other users.
-- Optional: Users can rate or like rides.
+Share the ride online
 
-**Deliverable:**  
-Users can share rides online and view others’ rides.
-</details>
+Other users can view shared routes and rate them.
 
-<details>
-<summary>Phase 4: Real-time Features & SOS Alerts</summary>
-
-- Implement live user location tracking using Firebase Realtime DB.
-- Display other active users on the map (if visibility enabled).
-- Add SOS button: mark exact location and description of problem.
-- Send notifications to nearby users using Firebase Cloud Messaging.
-- Optional: add “join group ride” feature.
-
-**Deliverable:**  
-Live user map works; SOS alerts can be sent/received in real time.
-</details>
-
-<details>
-<summary>Phase 5: Info Board & Media Storage</summary>
-
-- Add Firestore collection for info board posts.
-- Implement categories: events, classifieds, services.
-- Enable image uploads with Firebase Storage.
-- Add filters by topic, location, or date.
-- Display posts in a scrollable list in the app.
-
-**Deliverable:**  
-Users can post, view, and filter info board content with images.
-</details>
-
-<details>
-<summary>Phase 6: Polishing & Testing</summary>
-
-- Improve UI/UX: buttons, maps, stats display.
-- Test GPS tracking accuracy and map polylines.
-- Test Firebase sync: offline → online transitions.
-- Test SOS alerts and notifications.
-- Bug fixes, code cleanup, and comments.
-
-**Deliverable:**  
-Stable, functional app ready for submission/demo.
-</details>
-
-<details>
-<summary>Phase 7: Free Testing & Deployment</summary>
-
-- Build debug/release APK: `flutter build apk --debug`
-- Install APK on your own device for testing.
-- Optional: use Firebase App Distribution to share APK with testers.
-- Prepare screenshots/documentation for final presentation.
-</details>
+If the rider needs help, they can trigger an SOS alert, which sends their location to nearby users.
 
 ---
+
+### Project Structure (Flutter)
+
+lib/
+ ├── screens/
+ ├── models/
+ ├── services/
+ ├── widgets/
+ ├── database/
+ └── main.dart
+
+ screens – app pages and UI
+
+models – data models
+
+services – Firebase and API logic
+
+widgets – reusable UI components
+
+database – SQLite implementation
+
+---
+
+## Roadmap
+This roadmap outlines the development plan for the Moto Tracker App, a Flutter-based motorcycle tracking app with local GPS tracking, route sharing, real-time user map, and emergency alerts.
+---
+
+## Phase 1 – Project Setup
+
+Install Flutter and Android Studio
+
+Initialize Flutter project
+
+Set up Firebase project
+
+Connect Firebase to the app
+
+Add required packages
+
+Deliverable:
+Basic Flutter app running with Firebase connected.
+
+---
+
+## Phase 2 – Local Route Tracking
+ Implement GPS tracking
+
+Create SQLite database
+
+Add start/stop ride buttons
+
+Calculate ride statistics
+
+Display route on map
+
+Deliverable:
+Users can record rides and view route statistics.
+
+---
+
+## Phase 3 – Route Sharing
+Add Firestore integration
+
+Sync rides to cloud
+
+Add ride metadata
+
+Display shared routes
+
+Deliverable:
+Users can view and share routes online.
+
+---
+
+## Phase 4 – Real-Time Features
+
+Live rider location
+
+Map showing nearby users
+
+SOS emergency alerts
+
+Push notifications
+
+Deliverable:
+Live map and emergency alerts working in real time.
+
+---
+
+## Phase 5 – Info Board
+
+Firestore posts collection
+
+Categories (events, classifieds, services)
+
+Image uploads with Firebase Storage
+
+Filters by topic and location
+
+Deliverable:
+Users can post and browse community information.
+
+---
+
+## Phase 6 – Testing and Improvements
+
+Improve UI and usability
+
+Test GPS accuracy
+
+Test real-time features
+
+Fix bugs and optimize code
+
+Deliverable:
+Stable and functional application.
